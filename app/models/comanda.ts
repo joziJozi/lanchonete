@@ -5,6 +5,24 @@ export default class Comanda extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare mesa: string
+
+  @column()
+  declare funcionarioId: number
+
+  @column()
+  declare clienteId: number
+
+  @column()
+  declare forma_pagamentoId: number
+
+  @column()
+  declare dataPagamento: Date
+
+  @column()
+  declare data: Date
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

@@ -5,6 +5,12 @@ export default class ProdutoComanda extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+ declare produtoId: number
+
+  @column()
+ declare comandaId: number
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
