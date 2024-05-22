@@ -5,7 +5,7 @@ export default class FormaPagamentosController {
     async index({request}: HttpContext){
         const page = request.input('page', 1)
         const perpage = request.input('perpage', 10)
-        return await FormaPagamento.query().paginate(page, perpage)
+        return await FormaPagamento.query().preload('comandas').paginate(page, perpage)
     }
     async show({params}: HttpContext){
         return await FormaPagamento.findOrFail(params.id)

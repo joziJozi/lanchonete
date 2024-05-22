@@ -8,7 +8,12 @@ export default class ComandasController {
         return await Comanda.query().paginate(page, perpage)
     }
     async show({params}: HttpContext){
-        return await Comanda.findOrFail(params.id)
+        return await Comanda.query()
+                            .where('id', params.id)
+                            .preload('cliente')
+                            .preload('funcionario')
+                            .preload('formapagamento')
+                            .first()
     }
     async store({request}: HttpContext){
         const dados = request.only(['mesa', 'funcionarioId', 'clienteId', 'forma_PagamentoId', 'dataPagamento','data'])
